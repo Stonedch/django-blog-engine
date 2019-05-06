@@ -7,5 +7,6 @@
         <h1>{{ post.title }}</h1>
         <small>{{ post.date_pub }}</small>
         <p>{{ post.content |  truncatechars:128 }}</p>
+        <a href="{{ post.get_absolute_url }}">Read more...</a>
     {% endfor %}
 {% endblock %}
