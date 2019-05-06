@@ -1,0 +1,11 @@
+# Byte-compiled
+__pycache__/
+
+# Text editor / IDE
+.vscode
+
+# Virtual environment
+.env/
+
+# DB
+db.sqlite3
