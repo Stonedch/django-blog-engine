@@ -8,4 +8,5 @@
     <h1>{{ post.title }}</h1>
     <small>{{ post.date_pub }}</small>
     <p>{{ post.content }}</p>
+    <a href="{% url 'posts_list_url' %}">Back</a>
 {% endblock %}
