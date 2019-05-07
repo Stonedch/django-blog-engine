@@ -1,23 +1,28 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.views.generic import View
 
+from .utils import ObjectDetailMixin
 from .models import *
 
 
-def get_posts_list(request):
-    posts = Post.objects.all()
-    return render(request, "posts/post-list.html", context={"posts": posts})
+class PostListView(View):
+    def get(self, request):
+        posts = Post.objects.all()
+        return render(request, "posts/post-list.html", context={"posts": posts})
 
 
-def get_post_detail(request, slug):
-    post = Post.objects.get(slug__iexact=slug)
-    return render(request, "posts/post-detail.html", context={"post": post})
+class PostDetailView(ObjectDetailMixin, View):
+    model = Post
+    template = "posts/post-detail.html"
 
 
-def get_tag_list(request):
-    tags = Tag.objects.all()
-    return render(request, "posts/tag-list.html", context={"tags": tags})
+class TagListView(View):
+    def get(self, request):
+        tags = Tag.objects.all()
+        return render(request, "posts/tag-list.html", context={"tags": tags})
 
 
-def get_tag_detail(request, slug):
-    tag = Tag.objects.get(slug__iexact=slug)
-    return render(request, "posts/tag-detail.html", context={"tag": tag})
+class TagDetailView(ObjectDetailMixin, View):
+    model = Tag
+    template = "posts/tag-detail.html"
