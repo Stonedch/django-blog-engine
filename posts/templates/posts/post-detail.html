@@ -10,7 +10,7 @@
     <p>{{ post.content |  truncatechars:128 }}</p>
     <div>
         {% for tag in post.tags.all %}
-            <span>#{{ tag.title }}</span>
+            <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a>
         {% endfor %}
     </div>
     <a href="{% url 'posts_list_url' %}">Back</a>

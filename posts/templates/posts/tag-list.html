@@ -6,7 +6,7 @@
     <h1>Tag List:</h1>
     <div>
         {% for tag in tags %}
-            <span>#{{ tag.title }}</span>
+            <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a>
         {% endfor %}
     </div>
 {% endblock %}
