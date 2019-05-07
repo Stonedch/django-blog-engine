@@ -5,11 +5,11 @@ from .models import *
 
 def get_posts_list(request):
     posts = Post.objects.all()
-    return render(request, "posts/posts-list.html", context={"posts": posts})
+    return render(request, "posts/post-list.html", context={"posts": posts})
 
 
 def get_post_detail(request, slug):
-    post = Post.objects.get(slug=slug)
+    post = Post.objects.get(slug__iexact=slug)
     return render(request, "posts/post-detail.html", context={"post": post})
 
 
@@ -19,5 +19,5 @@ def get_tag_list(request):
 
 
 def get_tag_detail(request, slug):
-    tag = Tag.objects.get(slug=slug)
+    tag = Tag.objects.get(slug__iexact=slug)
     return render(request, "posts/tag-detail.html", context={"tag": tag})
