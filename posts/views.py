@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Post
+from .models import *
 
 
 def get_posts_list(request):
@@ -10,3 +10,7 @@ def get_posts_list(request):
 def get_post_detail(request, slug):
     post = Post.objects.get(slug=slug)
     return render(request, "posts/post-detail.html", context={"post": post})
+
+def get_tag_list(request):
+    tags = Tag.objects.all()
+    return render(request, "posts/tag-list.html", context={"tags": tags})

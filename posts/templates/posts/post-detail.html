@@ -6,7 +6,12 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <small>{{ post.date_pub }}</small>
-    <p>{{ post.content }}</p>
+    <div>{{ post.date_pub }}</div>
+    <p>{{ post.content |  truncatechars:128 }}</p>
+    <div>
+        {% for tag in post.tags.all %}
+            <span>#{{ tag.title }}</span>
+        {% endfor %}
+    </div>
     <a href="{% url 'posts_list_url' %}">Back</a>
 {% endblock %}
