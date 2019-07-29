@@ -1,0 +1,20 @@
+{% extends "posts/base.html" %}
+
+{% block title %}Tag Crate{% endblock %}
+
+{% block content %}
+    <h1>Tag Create</h1>
+
+    <form action="{% url 'tag_create_url' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.errors %}
+                {{ field.errors }}
+            {% endif %}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+        <button type="submit">Create Tag</button>
+    </form>
+
+{% endblock %}
