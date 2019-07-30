@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <h1>Post Create:</h1>
+    <h1>Write Post:</h1>
 
     <form action="{% url 'post_create_url' %}" method="POST">
         {% csrf_token %}
@@ -15,7 +15,7 @@
             {{ field.label }}
             {{ field }}
         {% endfor %}
-        <button type="submit">Create Post</button>
+        <button type="submit">Write Post</button>
     </form>
 
 {% endblock %}
