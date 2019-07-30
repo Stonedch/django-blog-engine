@@ -7,11 +7,10 @@ from .models import *
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "slug", "content", "tags"]
+        fields = ["title", "content", "tags"]
 
         widgets = {
             "title": forms.TextInput(),
-            "slug": forms.TextInput(),
             "content": forms.Textarea(),
             "tags": forms.SelectMultiple(),
         }
