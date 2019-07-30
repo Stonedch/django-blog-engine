@@ -1,7 +1,21 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Tag
+from .models import *
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ["title", "slug", "content", "tags"]
+
+        widgets = {
+            "title": forms.TextInput(),
+            "slug": forms.TextInput(),
+            "content": forms.Textarea(),
+            "tags": forms.SelectMultiple(),
+        }
+
 
 class TagForm(forms.ModelForm):
     class Meta:

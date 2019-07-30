@@ -5,7 +5,7 @@ from django.views.generic import View
 
 from .utils import ObjectDetailMixin
 from .models import *
-from .forms import TagForm
+from .forms import *
 
 
 class PostListView(View):
@@ -17,6 +17,19 @@ class PostListView(View):
 class PostDetailView(ObjectDetailMixin, View):
     model = Post
     template = "posts/post-detail.html"
+
+
+class PostCreate(View):
+    def get(self, request):
+        form = PostForm()
+        return render(request, "posts/post-create.html", context={"form": form})
+    
+    def post(self, request):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return redirect(post)
+        return render(request, "posts/post-create.html", context={"form": form})
 
 
 class TagListView(View):
