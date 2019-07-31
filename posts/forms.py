@@ -23,6 +23,6 @@ class TagForm(forms.ModelForm):
 
     def clean_slug(self):
         slug = self.cleaned_data["slug"].lower()
-        if Tag.objects.filter(slug__iexact=slug).count():
+        if (not self.instance.id) and (Tag.objects.filter(slug__iexact=slug).count()):
             raise ValidationError("Слаг \"{}\" уже существует.".format(slug.lower()))
         return slug
