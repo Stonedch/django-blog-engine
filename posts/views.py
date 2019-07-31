@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 
-from .utils import ObjectDetailMixin, ObjectCreateMixin
+from .utils import *
 from .models import *
 from .forms import *
 
@@ -23,6 +23,13 @@ class PostCreate(ObjectCreateMixin, View):
     form_model = PostForm
     template = "posts/post-create.html"
 
+
+class PostUpdate(ObjectUpdateMixin ,View):
+    model = Post
+    form_model = PostForm
+    template = "posts/post-update.html"
+
+
 class TagListView(View):
     def get(self, request):
         tags = Tag.objects.all()
@@ -37,3 +44,9 @@ class TagDetailView(ObjectDetailMixin, View):
 class TagCreate(ObjectCreateMixin, View):
     form_model = TagForm
     template = "posts/tag-create.html"
+
+
+class TagUpdate(ObjectUpdateMixin, View):
+    model = Tag
+    form_model = TagForm
+    template = "posts/tag-update.html"

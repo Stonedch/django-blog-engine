@@ -1,0 +1,21 @@
+{% extends "posts/base.html" %}
+
+{% block title %}Post Update{% endblock %}
+
+{% block content %}
+
+    <h1>Update Post:</h1>
+
+    <form action="{{ post.get_update_url }}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.errors %}
+                {{ field.errors }}
+            {% endif %}
+            {{ field.label }}
+            {{ field }}
+        {% endfor %}
+        <button type="submit">Update Post</button>
+    </form>
+
+{% endblock %}

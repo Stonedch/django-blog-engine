@@ -13,5 +13,6 @@
             <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a>
         {% endfor %}
     </div>
+    <a href="{{ post.get_update_url }}">Update</a>
     <a href="{% url 'post_list_url' %}">Back</a>
 {% endblock %}

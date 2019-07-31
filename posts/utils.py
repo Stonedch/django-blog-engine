@@ -28,3 +28,22 @@ class ObjectCreateMixin:
             obj = form.save()
             return redirect(obj)
         return render(request, self.template, context={"form": form})
+
+
+class ObjectUpdateMixin:
+    model = None
+    form_model = None
+    template = None
+
+    def get(self, request, slug):
+        updatable_model = self.model.objects.get(slug__iexact=slug)
+        updatable_form = self.form_model(instance=updatable_model)
+        return render(request, self.template, context={"form": updatable_form})
+    
+    def post(self, request, slug):
+        updatable_model = self.model.objects.get(slug__iexact=slug)
+        updatable_form = self.form_model(request.POST, instance=updatable_model)
+        if updatable_form.is_valid():
+            updated_form = updatable_form.save()
+            return redirect(updated_form)
+        return render(request, self.template, context={"form": updatable_form})
