@@ -14,5 +14,6 @@
         {% endfor %}
     </div>
     <a href="{{ post.get_update_url }}">Update</a>
+    <a href="{{ post.get_delete_url }}">Delete</a>
     <a href="{% url 'post_list_url' %}">Back</a>
 {% endblock %}

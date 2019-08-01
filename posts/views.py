@@ -24,10 +24,16 @@ class PostCreate(ObjectCreateMixin, View):
     template = "posts/post-create.html"
 
 
-class PostUpdate(ObjectUpdateMixin ,View):
+class PostUpdate(ObjectUpdateMixin, View):
     model = Post
     form_model = PostForm
     template = "posts/post-update.html"
+
+
+class PostDelete(ObjectDeleteMixin, View):
+    model = Post
+    template = "posts/post-delete.html"
+    reverse_url = "post_list_url"
 
 
 class TagListView(View):
@@ -50,3 +56,9 @@ class TagUpdate(ObjectUpdateMixin, View):
     model = Tag
     form_model = TagForm
     template = "posts/tag-update.html"
+
+
+class TagDelete(ObjectDeleteMixin, View):
+    model = Tag
+    template = "posts/tag-delete.html"
+    reverse_url = "tag_list_url"

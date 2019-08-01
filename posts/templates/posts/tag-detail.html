@@ -7,6 +7,8 @@
 {% block content %}
     <h1>Posts with <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a> tag:</h1>
     <a href="{{ tag.get_update_url }}">Update</a>
+    <a href="{{ tag.get_delete_url }}">Delete</a>
+    <a href="{% url 'tag_list_url' %}">Back</a>
     {% for post in tag.posts.all %}
         {% include "posts/includes/post-template.html" %}
         <a href="{{ post.get_absolute_url }}">Read more...</a>

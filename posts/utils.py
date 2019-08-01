@@ -47,3 +47,19 @@ class ObjectUpdateMixin:
             updated_form = updatable_form.save()
             return redirect(updated_form)
         return render(request, self.template, context={"form": updatable_form})
+
+
+class ObjectDeleteMixin:
+    model = None
+    template = None
+    reverse_url = None
+
+    def get(self, request, slug):
+        deletable_model = self.model.objects.get(slug__iexact=slug)
+        return render(request, self.template,
+                      context={self.model.__name__.lower(): deletable_model})
+    
+    def post(self, request, slug):
+        deletable_model = self.model.objects.get(slug__iexact=slug)
+        deletable_model.delete()
+        return redirect(reverse(self.reverse_url))
