@@ -80,9 +80,16 @@ a, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .post__content {
-    margin: 0.2in 0;
+    margin-top: 0.2in;
     color: #e0e0e0;
     font-size: 1.2rem;
+}
+
+.post__tag-list {
+    margin-bottom: 0.2in;
+    color: #e0e0e0;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .button {
