@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,21 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %} Base {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Just a Blog - {% block title %}{% endblock %}</title>
 </head>
 
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="{% url 'post_list_url' %}">Posts</a></li>
-            <li><a href="{% url 'tag_list_url' %}">Tags</a></li>
-        </ul>
-    </nav>
+    <div class="wrap">
 
-    <div>
-        {% block content %}
-        {% endblock %}
+        <header class="header">
+
+            <h1 class="header__title">Just a Blog.</h1>
+
+            <div class="header__nav-bar">
+                <a class="header__nav-bar-item" href="{% url 'post_list_url' %}">Posts</a>
+                <a class="header__nav-bar-item" href="{% url 'post_create_url' %}">Write Post</a>
+                <a class="header__nav-bar-item" href="{% url 'tag_list_url' %}">Tags</a>
+            </div>
+
+        </header>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
     </div>
 
 </body>

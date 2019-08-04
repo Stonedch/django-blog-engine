@@ -1,12 +1,18 @@
 {% extends "posts/base.html" %}
+{% load static %}
 
-{% block title %} Post List {% endblock %}
+{% block title %} Posts {% endblock %}
 
 {% block content %}
-    <h1>Post List:</h1>
-    <a href="{% url 'post_create_url' %}">Write Post</a>
-    {% for post in posts %}
-        {% include "posts/includes/post-template.html" %}
-        <a href="{{ post.get_absolute_url }}">Read more...</a>
-    {% endfor %}
+
+        {% for post in posts %}
+
+            <div class="post">
+
+                {% include "posts/includes/post-template.html" %}
+
+            </div>
+
+        {% endfor %}
+
 {% endblock %}

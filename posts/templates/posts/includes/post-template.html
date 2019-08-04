@@ -1,8 +1,11 @@
-<h2>{{ post.title }}</h2>
-<div>{{ post.date_pub }}</div>
-<p>{{ post.content |  truncatechars:128 }}</p>
-<div>
+<div class="post__header">
+    <h3 class="post__title">{{ post.title }}.</h3>
+    <span class="post__date-pub">{{ post.date_pub }}</span>
+</div>
+<p class="post__content">{{ post.content |  truncatechars:128 }}</p>
+<a class="button" href="{{ post.get_absolute_url }}">Read more</a>
+{% comment %} <div>
     {% for tag in post.tags.all %}
         <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a>
     {% endfor %}
-</div>
+</div> {% endcomment %}
