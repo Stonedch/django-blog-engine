@@ -3,8 +3,6 @@
 {% block title %}Tag List{% endblock %}
 
 {% block content %}
-    <h1>Tag List:</h1>
-    <a href="{% url 'tag_create_url' %}">Add Tag</a>
     <div>
         {% for tag in tags %}
             <a href="{{ tag.get_absolute_url }}">#{{ tag.title }}</a>
