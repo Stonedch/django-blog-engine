@@ -5,14 +5,22 @@
 
 {% block content %}
 
-        {% for post in posts %}
+    {% for post in posts %}
 
-            <div class="post">
+        <div class="post">
 
-                {% include "posts/includes/post-template.html" %}
+            {% include "posts/includes/post-template.html" %}
 
-            </div>
+        </div>
 
-        {% endfor %}
+    {% endfor %}
+
+    <ul class="post-list-pagination">
+        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="#">Previous</a></li>
+        <li><a class="post-list-pagination__item post-list-pagination__item_page post-list-pagination__item_page_current" href="#">1</a></li>
+        <li><a class="post-list-pagination__item post-list-pagination__item_page" href="#">2</a></li>
+        <li><a class="post-list-pagination__item post-list-pagination__item_page" href="#">3</a></li>
+        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="#">Next</a></li>
+    </ul>
 
 {% endblock %}

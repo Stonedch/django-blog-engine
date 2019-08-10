@@ -142,3 +142,55 @@ a, p, h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     text-transform: uppercase;
 }
+
+/* Posts Pagination */
+
+.post-list-pagination {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+
+    list-style: none;
+}
+
+.post-list-pagination__item {
+    margin: 0 0.1in;
+
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.post-list-pagination__item_page {
+    padding: 0 0.1in;
+    border: 0.2rem solid #505050;
+
+    color: #505050;
+
+    animation-duration: 1s, 3s;
+}
+
+.post-list-pagination__item_page:hover {
+    border: 0.2rem solid #e0e0e0;
+
+    color: #e0e0e0;
+}
+
+.post-list-pagination__item_page_current {
+    border: 0.2rem solid #e0e0e0;
+
+    background: #e0e0e0;
+
+    color: #141414;
+}
+
+.post-list-pagination__item_button {
+    padding: 0 0.1in;
+    border: 0.2rem solid #e0e0e0;
+
+    background: #e0e0e0;
+
+    font-weight: bold;
+    color: #212121;
+}
