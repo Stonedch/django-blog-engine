@@ -171,7 +171,7 @@ a, p, h1, h2, h3, h4, h5, h6 {
     animation-duration: 1s, 3s;
 }
 
-.post-list-pagination__item_page:hover {
+.post-list-pagination__item_page:hover:not(.post-list-pagination__item_page_current) {
     border: 0.2rem solid #e0e0e0;
 
     color: #e0e0e0;
@@ -187,10 +187,16 @@ a, p, h1, h2, h3, h4, h5, h6 {
 
 .post-list-pagination__item_button {
     padding: 0 0.1in;
-    border: 0.2rem solid #e0e0e0;
+    border: 0.2rem solid #505050;
 
-    background: #e0e0e0;
+    background: #505050;
 
     font-weight: bold;
     color: #212121;
+}
+
+.post-list-pagination__item_button:hover {
+    border: 0.2rem solid #e0e0e0;
+
+    background: #e0e0e0;
 }
