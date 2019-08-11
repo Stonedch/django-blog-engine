@@ -20,7 +20,7 @@
             </div>
             <div class="admin-panel__bar admin-panel__bar_right">
                     <a class="admin-panel__item" href="{% url 'post_create_url' %}">Write Post</a>
-                    <a class="admin-panel__item" href="{% url 'post_create_url' %}">Add Tag</a>
+                    <a class="admin-panel__item" href="{% url 'tag_create_url' %}">Add Tag</a>
                     <a class="admin-panel__item {% if not detail %}admin-panel__item_disable{% endif%}" href="{{ model.get_update_url }}">Update</a>
                     <a class="admin-panel__item {% if not detail %}admin-panel__item_disable{% endif%}" href="{{ model.get_delete_url }}">Delete</a>
             </div>
