@@ -5,6 +5,10 @@
 
 {% block content %}
 
+    <form class="search" action="{% url 'post_list_url' %}">
+        <input class="search__input" type="text" name="search" placeholder="Search">
+    </form>
+
     {% for post in page.object_list %}
 
         <div class="post">

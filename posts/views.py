@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 from .utils import *
 from .models import *
@@ -12,11 +13,16 @@ from .forms import *
 
 class PostListView(View):
     def get(self, request):
-        posts = Post.objects.all()
-        paginator = Paginator(posts, 3)
         page_number = request.GET.get("page", 1)
-        page = paginator.get_page(page_number)
+        search_query = request.GET.get("search", "")
 
+        if search_query:
+            posts = Post.objects.filter(Q(title__icontains=search_query) | Q(content__icontains=search_query))
+        else:
+            posts = Post.objects.all()
+
+        paginator = Paginator(posts, 2)
+        page = paginator.get_page(page_number)
         previous_page_url = next_page_url = "?page={}".format(page.number)
 
         if page.has_previous():

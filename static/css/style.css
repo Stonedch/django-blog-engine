@@ -143,6 +143,37 @@ a, p, h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+/* Search */
+
+.search {
+    margin-top: 0.3in;
+
+    display: flex;
+    justify-content: center;
+}
+.search__input {
+    padding: 12px 0;
+    width: 50%;
+    border: none;
+    border-bottom: 0.2rem solid #505050;
+
+    background-color: transparent;
+
+    color: #505050;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 18px;
+}
+
+.search__input::placeholder {
+    text-transform: uppercase;
+}
+
+.search__input:hover, .search__input:focus {
+    color: #e0e0e0;
+    border-bottom: 0.2rem solid #e0e0e0;
+}
+
 /* Posts Pagination */
 
 .post-list-pagination {
