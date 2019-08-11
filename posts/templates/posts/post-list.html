@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    {% for post in posts %}
+    {% for post in page.object_list %}
 
         <div class="post">
 
@@ -16,11 +16,15 @@
     {% endfor %}
 
     <ul class="post-list-pagination">
-        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="#">Previous</a></li>
-        <li><a class="post-list-pagination__item post-list-pagination__item_page post-list-pagination__item_page_current" href="#">1</a></li>
-        <li><a class="post-list-pagination__item post-list-pagination__item_page" href="#">2</a></li>
-        <li><a class="post-list-pagination__item post-list-pagination__item_page" href="#">3</a></li>
-        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="#">Next</a></li>
+        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="{{ previous_page_url }}">Previous</a></li>
+
+        {% for i in page.paginator.page_range%}
+            {% if i >= page.number|add:-5 and i <= page.number|add:5 %}
+                <li><a class="post-list-pagination__item post-list-pagination__item_page {% if page.number == i %}post-list-pagination__item_page_current{% endif %}" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        <li><a class="post-list-pagination__item post-list-pagination__item_button" href="{{ next_page_url }}">Next</a></li>
     </ul>
 
 {% endblock %}

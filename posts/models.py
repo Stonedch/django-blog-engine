@@ -15,6 +15,9 @@ class Post(models.Model):
     content = models.TextField(blank=True, db_index=True)
     date_pub = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-date_pub"]
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)
@@ -36,6 +39,9 @@ class Post(models.Model):
 class Tag(models.Model):
     title = models.CharField(max_length=128, db_index=True)
     slug = models.SlugField(max_length=128, unique=True)
+
+    class Meta:
+        ordering = ["title"]
 
     def get_absolute_url(self):
         return reverse("tag_detail_url", kwargs={"slug": self.slug})

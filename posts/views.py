@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 from .utils import *
 from .models import *
@@ -12,7 +13,24 @@ from .forms import *
 class PostListView(View):
     def get(self, request):
         posts = Post.objects.all()
-        return render(request, "posts/post-list.html", context={"posts": posts})
+        paginator = Paginator(posts, 3)
+        page_number = request.GET.get("page", 1)
+        page = paginator.get_page(page_number)
+
+        previous_page_url = next_page_url = "?page={}".format(page.number)
+
+        if page.has_previous():
+            previous_page_url = "?page={}".format(page.previous_page_number())
+        if page.has_next():
+            next_page_url = "?page={}".format(page.next_page_number())
+
+        context = {
+            "page": page,
+            "next_page_url": next_page_url,
+            "previous_page_url": previous_page_url
+        }
+
+        return render(request, "posts/post-list.html", context)
 
 
 class PostDetailView(ObjectDetailMixin, View):
@@ -24,7 +42,6 @@ class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     raise_exception = True
     form_model = PostForm
     template = "posts/post-create.html"
-
 
 class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
     raise_exception = True
